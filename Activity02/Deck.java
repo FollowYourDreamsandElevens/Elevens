@@ -21,9 +21,10 @@ public class Deck {
      * The next card to be dealt is at size - 1.
      */
     private int size;
-    private String[] ranks = {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};
-    private String[] suits = {"Clubs","Diamonds","Hearts","Spades"};
-    private int[] values = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+
+    private String[] ranks;
+    private String[] suits;
+    private int[] values;
 
     /**
      * Creates a new <code>Deck</code> instance.<BR>
@@ -34,10 +35,19 @@ public class Deck {
      * @param values is an array containing all of the card point values.
      */
     public Deck(String[] ranks, String[] suits, int[] values) {
-        Card cardHolder = null;
-        for(int s = 0; s>suits.length; s++){
-        
+        this.ranks = ranks;
+        this.suits = suits;
+        this.values = values;
+        cards = new ArrayList<Card>();
+        for(int i = 0; i < suits.length; i++){
+            for(int j = 0; j<ranks.length; j++){
+               
+                    Card card = new Card(ranks[j],suits[i],values[j]);
+                    cards.add(card);
+                
+            }
         }
+        size = cards.size();
     }
 
     /**
@@ -45,8 +55,7 @@ public class Deck {
      * @return true if this deck is empty, false otherwise.
      */
     public boolean isEmpty() {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-        return false;
+        return (size == 0);
     }
 
     /**
@@ -54,8 +63,7 @@ public class Deck {
      * @return the number of undealt cards in this deck.
      */
     public int size() {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-        return 52;
+        return size;
     }
 
     /**
@@ -72,8 +80,11 @@ public class Deck {
      *         previously dealt.
      */
     public Card deal() {
-        /* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-        return null;
+        //size--;
+        Card dealtCard = cards.get(size-1);
+        cards.remove(size-1);
+        size = cards.size();
+        return dealtCard;
     }
 
     /**
