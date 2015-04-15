@@ -43,12 +43,65 @@ public class DeckTest
     }
 
     @Test
-    public void isEmptyTest()
+    public void isEmptyFalse()
     {
-        Activity02.Deck deck2 = new Activity02.Deck({"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"}, {"Clubs","Diamonds","Hearts","Spades"}, {1,2,3,4,5,6,7,8,9,10,11,12,13});
+        String[] testRank = {"A", "B"};
+        String[] testSuit = {"C", "D"};
+        int[] testValues = {1, 2};
+        Activity02.Deck deck2 = new Activity02.Deck(testRank, testSuit, testValues);
         assertEquals(false, deck2.isEmpty());
     }
     
+    @Test
+    public void isEmptyTrue()
+    {
+        String[] testRank = {};
+        String[] testSuit = {};
+        int[] testValues = {};
+        Activity02.Deck deck2 = new Activity02.Deck(testRank, testSuit, testValues);
+        assertEquals(true, deck2.isEmpty());
+    }
+
+
+    @Test
+    public void sizeTest()
+    {
+        String[] testRank = {"A", "B", "C"};
+        String[] testSuit = {"D", "E", "F"};
+        int[] testValues = {1, 2, 3};
+        Activity02.Deck deck2 = new Activity02.Deck(testRank, testSuit, testValues);
+        assertEquals(9, deck2.size());
+    }
+
+    @Test
+    public void dealTest()
+    {
+        String[] testRank = {"A", "B", "C"};
+        String[] testSuit = {"D", "E", "F"};
+        int[] testValues = {1, 2, 3};
+        Activity02.Deck deck2 = new Activity02.Deck(testRank, testSuit, testValues);
+        assertNotNull(deck2.deal());
+        assertNotNull(deck2.deal());
+    }
     
+    @Test
+    public void dealTest2()
+    {
+        String[] testRank = {"A", "B"};
+        String[] testSuit = {"D", "E"};
+        int[] testValues = {1, 2};
+        Activity02.Deck deck2 = new Activity02.Deck(testRank, testSuit, testValues);
+        assertNotNull(deck2.deal());
+        assertNotNull(deck2.deal());
+        assertNotNull(deck2.deal());
+        assertNotNull(deck2.deal());
+        assertNull(deck2.deal());
+    }
 }
+
+
+
+
+
+
 

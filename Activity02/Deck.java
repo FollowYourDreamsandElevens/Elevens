@@ -1,5 +1,4 @@
 package Activity02;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -21,7 +20,6 @@ public class Deck {
      * The next card to be dealt is at size - 1.
      */
     private int size;
-
     private String[] ranks;
     private String[] suits;
     private int[] values;
@@ -55,7 +53,11 @@ public class Deck {
      * @return true if this deck is empty, false otherwise.
      */
     public boolean isEmpty() {
-        return (size == 0);
+        if (size == 0){
+            return true;}
+        else {
+            return false;}
+           
     }
 
     /**
@@ -81,10 +83,16 @@ public class Deck {
      */
     public Card deal() {
         //size--;
+        if (size > 0){
         Card dealtCard = cards.get(size-1);
         cards.remove(size-1);
         size = cards.size();
         return dealtCard;
+       }
+       else
+       {
+           return null;}
+        
     }
 
     /**
